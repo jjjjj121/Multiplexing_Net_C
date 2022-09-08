@@ -54,6 +54,7 @@ int main()
 
 	connect(ServerSocket, (SOCKADDR*)&ServerAddrIn, sizeof(SOCKADDR_IN));
 
+
 	int X = 1;
 	int Y = 1;
 	bool bRunning = true;

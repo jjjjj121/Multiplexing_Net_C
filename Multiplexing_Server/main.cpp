@@ -69,7 +69,7 @@ int main()
 		//맨앞 매개변수는 WIndow는 0넣어도됨 ->필요한 소켓 갯수?
 		int fd_num = select(0, &CopyReads, 0, 0, &Timeout);
 
-	
+
 		if (fd_num == 0)
 		{
 			//another process
@@ -102,7 +102,7 @@ int main()
 				}
 				else
 				{
-				
+
 					SOCKET ClientSocket = Original.fd_array[i];
 					//Client 소켓, Recv, Send
 					char Buffer[1024] = { 0, };
@@ -190,14 +190,13 @@ int main()
 						memcpy(&Buffer[0], (char*)&X, 4);
 						memcpy(&Buffer[4], (char*)&Y, 4);
 
-						for (size_t i = 0; i < Original.fd_count; ++i)
-						{
-							if (Original.fd_array[i] != ServerSocket)
-							{
-								int SentLength = send(Original.fd_array[i], Buffer, 8, 0);
-							}
 
+						if (Original.fd_array[i] != ServerSocket)
+						{
+							int SentLength = send(Original.fd_array[i], Buffer, 8, 0);
 						}
+
+
 
 					}
 
