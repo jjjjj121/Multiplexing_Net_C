@@ -1,2 +1,3 @@
 C:\JAEM\0628 Network(Plyer)\Select_Client\Debug\Select_Client.exe
 C:\Users\user\OneDrive\바탕 화면\Project\Multiplexing_Net_C\Multiplexing_Client\Debug\Select_Client.exe
+C:\JAEM\C++\Multiplexing_Net_C\Multiplexing_Client\Debug\Select_Client.exe

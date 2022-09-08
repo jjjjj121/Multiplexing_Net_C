@@ -99,6 +99,16 @@ int main()
 
 					FD_SET(ClientSocket, &Original);
 					std::cout << "Connected Client : " << ClientSocket << std::endl;
+					std::cout << "X ÁÂÇ¥ - " << X << "  Y ÁÂÇ¥ -" << Y << std::endl;
+
+					char Buffer2[1024] = { 0, };
+
+					memcpy(&Buffer2[0], (char*)&X, 4);
+					memcpy(&Buffer2[4], (char*)&Y, 4);
+
+					int SentLength2 = send(ClientSocket, Buffer2, 8, 0);
+
+
 				}
 				else
 				{
@@ -159,6 +169,7 @@ int main()
 							if (Map[Y][X + 1] == '1')
 							{
 								X++;
+
 							}
 							break;
 
@@ -166,6 +177,8 @@ int main()
 
 						//draw
 						system("cls");
+
+
 						for (int MapY = 0; MapY < 10; ++MapY)
 						{
 							for (int MapX = 0; MapX < 10; ++MapX)
@@ -190,11 +203,19 @@ int main()
 						memcpy(&Buffer[0], (char*)&X, 4);
 						memcpy(&Buffer[4], (char*)&Y, 4);
 
+						std::cout << "RecvLength   " << RecvLength << std::endl;
+						std::cout << "X ÁÂÇ¥ - " << X << "  Y ÁÂÇ¥ -" << Y << std::endl;
 
-						if (Original.fd_array[i] != ServerSocket)
+
+						for (int i = 0; i < Original.fd_count; ++i)
 						{
-							int SentLength = send(Original.fd_array[i], Buffer, 8, 0);
+							if (Original.fd_array[i] != ServerSocket)
+							{
+								int SentLength = send(Original.fd_array[i], Buffer, 8, 0);
+
+							}
 						}
+
 
 
 
